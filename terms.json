@@ -1,0 +1,30 @@
+[
+    {
+        "term": "API (Application Programming Interface)",
+        "definition": "A set of rules that allows different software applications to talk to each other. It's like a waiter taking your order to the kitchen and bringing back your food."
+    },
+    {
+        "term": "Git",
+        "definition": "A version control system used by developers to track changes in their code. It's like a time machine for your project, so you can go back to a previous version if you make a mistake."
+    },
+    {
+        "term": "Variable",
+        "definition": "A container for storing data values. In Python, you can create a variable like `name = 'Adrian'` to store the text 'Adrian'."
+    },
+    {
+        "term": "Function",
+        "definition": "A block of code which only runs when it is called. It helps organize code and makes it reusable. You can think of it as a recipe that you can use over and over."
+    },
+    {
+        "term": "Loop",
+        "definition": "A way to execute a block of code repeatedly. For example, a 'for loop' can go through a list of items one by one."
+    },
+    {
+        "term": "Cloud Computing",
+        "definition": "Delivering computing services—including servers, storage, databases, and software—over the Internet ('the cloud')."
+    },
+    {
+        "term": "HTML (HyperText Markup Language)",
+        "definition": "The standard language used to create and design documents on the World Wide Web. It structures the content of a webpage."
+    }
+]
