@@ -3,37 +3,23 @@ import json
 import random
 import requests
 
-# This function gets your LinkedIn person URN (your unique ID)
-def get_person_urn():
-    access_token = os.environ.get("LINKEDIN_ACCESS_TOKEN")
-    if not access_token:
-        print("Error: LINKEDIN_ACCESS_TOKEN not found.")
-        return None
-    
-    headers = {
-        'Authorization': f'Bearer {access_token}',
-        'Content-Type': 'application/json'
-    }
-    
-    try:
-        response = requests.get('https://api.linkedin.com/v2/userinfo', headers=headers)
-        if response.status_code == 200:
-            user_info = response.json()
-            # The URN is usually in the 'sub' field
-            person_urn = f"urn:li:person:{user_info['sub']}"
-            print(f"Successfully found Person URN: {person_urn}")
-            return person_urn
-        else:
-            print(f"Error fetching user info: {response.status_code} - {response.text}")
-            return None
-    except Exception as e:
-        print(f"An exception occurred while fetching user info: {e}")
-        return None
+# --- CONFIGURATION ---
+# Your unique LinkedIn ID that you found in Step 1.
+# IMPORTANT: Replace the text inside the quotes with YOUR actual Person URN.
+PERSON_URN = "urn:li:person:leo-a-aguilar" 
+# --- END CONFIGURATION ---
+
 
 # This function posts the message to LinkedIn
 def post_to_linkedin(person_urn, post_text):
     access_token = os.environ.get("LINKEDIN_ACCESS_TOKEN")
-    
+    if not access_token:
+        print("Error: LINKEDIN_ACCESS_TOKEN secret not found.")
+        exit()
+    if "REPLACE_WITH_YOUR_ID" in person_urn:
+        print("Error: Please replace 'REPLACE_WITH_YOUR_ID' in the PERSON_URN variable in the Python script.")
+        exit()
+
     headers = {
         'Authorization': f'Bearer {access_token}',
         'Content-Type': 'application/json',
@@ -97,7 +83,5 @@ post_text = f"""Todays #TechTermOfTheDay is: {term}
 
 print(f"Preparing to post: {post_text}")
 
-# 4. Get the user's ID and then post to LinkedIn
-person_id = get_person_urn()
-if person_id:
-    post_to_linkedin(person_id, post_text)
+# 4. Post to LinkedIn using the manually set ID
+post_to_linkedin(PERSON_URN, post_text)
