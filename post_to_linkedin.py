@@ -4,20 +4,20 @@ import random
 import requests
 
 # --- CONFIGURATION ---
-# Your unique LinkedIn ID that you found in Step 1.
-# IMPORTANT: Replace the text inside the quotes with YOUR actual Person URN.
-PERSON_URN = "urn:li:person:leo-a-aguilar" 
+# The numeric ID of your LinkedIn Company Page that you found in the URL.
+# IMPORTANT: Replace the text inside the quotes with YOUR actual Company Page ID.
+COMPANY_URN = "urn:li:company:108093402" 
 # --- END CONFIGURATION ---
 
 
 # This function posts the message to LinkedIn
-def post_to_linkedin(person_urn, post_text):
+def post_to_linkedin(company_urn, post_text):
     access_token = os.environ.get("LINKEDIN_ACCESS_TOKEN")
     if not access_token:
         print("Error: LINKEDIN_ACCESS_TOKEN secret not found.")
         exit()
-    if "REPLACE_WITH_YOUR_ID" in person_urn:
-        print("Error: Please replace 'REPLACE_WITH_YOUR_ID' in the PERSON_URN variable in the Python script.")
+    if "REPLACE_WITH_YOUR_COMPANY_ID" in company_urn:
+        print("Error: Please replace 'REPLACE_WITH_YOUR_COMPANY_ID' in the COMPANY_URN variable in the Python script.")
         exit()
 
     headers = {
@@ -27,7 +27,7 @@ def post_to_linkedin(person_urn, post_text):
     }
 
     post_data = {
-        "author": person_urn,
+        "author": company_urn, # We are now using the Company URN as the author
         "lifecycleState": "PUBLISHED",
         "specificContent": {
             "com.linkedin.ugc.ShareContent": {
@@ -83,5 +83,5 @@ post_text = f"""Todays #TechTermOfTheDay is: {term}
 
 print(f"Preparing to post: {post_text}")
 
-# 4. Post to LinkedIn using the manually set ID
-post_to_linkedin(PERSON_URN, post_text)
+# 4. Post to LinkedIn using the Company ID
+post_to_linkedin(COMPANY_URN, post_text)
